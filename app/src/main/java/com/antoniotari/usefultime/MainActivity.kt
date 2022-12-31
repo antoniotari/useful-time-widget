@@ -38,5 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.progressBarMain.max = totalTimeHalfHours
         binding.progressBarMain.progress = elapsedHalfHours
+        binding.unitsMainTextView.text = getString(R.string.start_end_units, elapsedHalfHours, totalTimeHalfHours)
+        binding.timeStartEndMainTextView.text = getString(R.string.start_end_time, startTime, endTime)
     }
 }

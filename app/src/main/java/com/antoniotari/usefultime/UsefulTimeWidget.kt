@@ -38,7 +38,6 @@ class UsefulTimeWidget : AppWidgetProvider() {
 }
 
 internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
-    Log.d("aaaaaa", "updateAppWidget")
     val startTime = loadStartTimePref(context, appWidgetId)
     val endTime = loadEndTimePref(context, appWidgetId)
 
@@ -51,7 +50,7 @@ internal fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManage
 
     val views = RemoteViews(context.packageName, R.layout.useful_time_widget)
     views.setProgressBar(R.id.progressBar, totalTimeHalfHours, elapsedHalfHours, false)
-
-    // Instruct the widget manager to update the widget
+    views.setTextViewText(R.id.unitsTextView, context.getString(R.string.start_end_units, elapsedHalfHours, totalTimeHalfHours))
+    views.setTextViewText(R.id.timeStartEndTextView, context.getString(R.string.start_end_time, startTime, endTime))
     appWidgetManager.updateAppWidget(appWidgetId, views)
 }
